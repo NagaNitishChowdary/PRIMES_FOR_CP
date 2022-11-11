@@ -1,0 +1,24 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int N=1000000;
+bool arr[1000001];
+void SieveOfEratosthenes(){
+    for(int i=2;i<=N;i++) arr[i]=true;
+    for(int i=2;i*i<=N;i++){
+        if(arr[i]==true){
+            for(int j=i*i;j<=N;j+=i) arr[j]=false;
+        }
+    }
+}
+
+int main() {
+    int testCases; cin>> testCases;
+    SieveOfEratosthenes();
+    while(testCases--){
+        int n1; cin>>n1;
+        if(arr[n1]==true) cout << "Prime " << endl;
+        else cout << "not prime " << endl;
+    }
+}
